@@ -39,7 +39,6 @@ def new_user():
     firstname = input("Vorname? ")
     lastname = input("Nachname? ")
 
-    # Umlaute erkennen und gegen 'ae' 'oe' 'ue' austauschen
     lastname_edit = [umlaute_neu[umlaute.index(c)] if c in umlaute else c for c in lastname]
     lastname_edit = "".join(lastname_edit)
 
