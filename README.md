@@ -13,4 +13,5 @@ Until now manually input of user details is necessary. An automated solution is 
 ---
 atm script assumes that the email address is build like this:
 
-name 001 @ provider . com
+name001@provider.com
+(text 3digit# @ provider)
