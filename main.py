@@ -1,3 +1,5 @@
+import os
+
 adding = True
 data_mail = []
 data = {
@@ -6,7 +8,7 @@ data = {
     "email_start": input("Wie lautet die letzt aktuelle E-Mail? "),
     "password": input("Welches Passwort? "),
 }
-FILEPATH = "C:/Users/***/Desktop/user.csv"
+FILEPATH = os.environ.get("FILEPATH")
 umlaute = ["ä", "ö", "ü"]
 umlaute_neu = ["ae", "oe", "ue"]
 
