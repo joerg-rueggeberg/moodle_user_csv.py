@@ -9,3 +9,8 @@ This Script takes some user input
 to generate a csv file with username, firstname, lastname, ascending email address and password for uploading to an existing Moodle user database.
 
 Until now manually input of user details is necessary. An automated solution is in process of planning.
+
+---
+atm script assumes that the email adress is build like this:
+
+name 001 @ provider . com
