@@ -15,6 +15,10 @@ umlaute_neu = ["Ae", "Oe", "Ue", "ae", "oe", "ue"]
 
 
 def mail_prep():
+    """
+    Splits the users e-mail address input into 3 pieces:
+    name - # (3 digits) - provider
+    """
     global data_mail
     email = data["email_start"]
     data_mail.append(email.split("@")[0][:-3])
@@ -23,6 +27,11 @@ def mail_prep():
 
 
 def new_user():
+    """
+    Generates a new entry in the user database:
+    Takes users input for "firstname" and "lastname" to generate a username (first letter of firstname + lastname).
+    Saves an ascending e-mail address and the chosen password to the database.
+    """
     global data
     global data_mail
 
@@ -39,26 +48,31 @@ def new_user():
     firstname = input("Vorname? ")
     lastname = input("Nachname? ")
 
+    firstname_edit = [umlaute_neu[umlaute.index(c)] if c in umlaute else c for c in firstname]
+    firstname_edit = "".join(firstname_edit)
     lastname_edit = [umlaute_neu[umlaute.index(c)] if c in umlaute else c for c in lastname]
     lastname_edit = "".join(lastname_edit)
 
-    username = f"{firstname[0]}{lastname_edit}".lower()
+    username = f"{firstname_edit[0]}{lastname_edit}".lower()
     data_user = [f"{username},{firstname.title()},{lastname.title()},{mail_new},{data['password']}"]
     data["user"].append(data_user)
 
 
 def next_user():
+    """
+    Asks the user for adding more user to the database.
+    """
     global adding
     adding_input = input("Weiteren Nutzer anlegen (j/n)? ").lower()
     if adding_input == "n":
         adding = False
-    elif adding_input == "j":
-        adding = True
-    else:
-        print("Falsche Eingabe. Vorgang abgebrochen.")
+    # TODO 1: Error handling
 
 
 def write_data():
+    """
+    Take the entries out of data["user"] and writes them to the .csv file
+    """
     for i in data["user"]:
         with open(FILEPATH, "a+") as file_user:
             file_user.write(f"{str(i[0])}\n")
