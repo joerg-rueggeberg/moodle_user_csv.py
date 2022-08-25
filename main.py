@@ -24,6 +24,7 @@ def mail_prep():
 
 def new_user():
     global data
+    global data_mail
 
     data_mail[1] += 1
 
