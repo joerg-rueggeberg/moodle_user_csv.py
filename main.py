@@ -9,8 +9,8 @@ data = {
     "password": input("Welches Passwort? "),
 }
 FILEPATH = os.environ.get("FILEPATH")
-umlaute = ["ä", "ö", "ü"]
-umlaute_neu = ["ae", "oe", "ue"]
+umlaute = ["Ä", "Ö", "Ü", "ä", "ö", "ü"]
+umlaute_neu = ["AE", "OE", "UE", "ae", "oe", "ue"]
 
 
 def mail_prep():
@@ -37,10 +37,9 @@ def new_user():
     mail_new = f"{data_mail[0]}{mail_num}@{data_mail[2]}"
     firstname = input("Vorname? ")
     lastname = input("Nachname? ")
-
-    # TODO 1: Umlaut-check
-
-    username = f"{firstname[0]}{lastname}".lower()
+    lastname_edit = [umlaute_neu[umlaute.index(c)] if c in umlaute else c for c in lastname]
+    lastname_edit = "".join(lastname_edit)
+    username = f"{firstname[0]}{lastname_edit}".lower()
     data_user = [f"{username},{firstname.title()},{lastname.title()},{mail_new},{data['password']}"]
     data["user"].append(data_user)
 
