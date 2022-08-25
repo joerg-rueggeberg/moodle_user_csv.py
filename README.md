@@ -11,6 +11,6 @@ to generate a csv file with username, firstname, lastname, ascending email addre
 Until now manually input of user details is necessary. An automated solution is in process of planning.
 
 ---
-atm script assumes that the email adress is build like this:
+atm script assumes that the email address is build like this:
 
 name 001 @ provider . com
