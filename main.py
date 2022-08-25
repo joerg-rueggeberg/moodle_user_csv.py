@@ -1,5 +1,7 @@
 import os
 
+FILEPATH = os.environ.get("FILEPATH")
+
 adding = True
 data_mail = []
 data = {
@@ -8,9 +10,8 @@ data = {
     "email_start": input("Wie lautet die letzt aktuelle E-Mail? "),
     "password": input("Welches Passwort? "),
 }
-FILEPATH = os.environ.get("FILEPATH")
 umlaute = ["Ä", "Ö", "Ü", "ä", "ö", "ü"]
-umlaute_neu = ["AE", "OE", "UE", "ae", "oe", "ue"]
+umlaute_neu = ["Ae", "Oe", "Ue", "ae", "oe", "ue"]
 
 
 def mail_prep():
@@ -37,8 +38,11 @@ def new_user():
     mail_new = f"{data_mail[0]}{mail_num}@{data_mail[2]}"
     firstname = input("Vorname? ")
     lastname = input("Nachname? ")
+
+    # Umlaute erkennen und gegen 'ae' 'oe' 'ue' austauschen
     lastname_edit = [umlaute_neu[umlaute.index(c)] if c in umlaute else c for c in lastname]
     lastname_edit = "".join(lastname_edit)
+
     username = f"{firstname[0]}{lastname_edit}".lower()
     data_user = [f"{username},{firstname.title()},{lastname.title()},{mail_new},{data['password']}"]
     data["user"].append(data_user)
